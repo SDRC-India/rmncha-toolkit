@@ -1,6 +1,6 @@
 {
     "name": "si-rmncha",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "author": "Harekrishna Panigrahi",
     "homepage": "https://sdrc.co.in/",
     "private": true,
@@ -38,7 +38,7 @@
         "cordova-ios": "4.5.4",
         "cordova-plugin-device": "^2.0.1",
         "cordova-plugin-file": "^6.0.1",
-        "cordova-plugin-file-opener2": "^2.0.19",
+        "cordova-plugin-file-opener2": "git+https://github.com/pwlin/cordova-plugin-file-opener2.git#681d39b140c9d4ae0d8c8f68000515e16ebb9eba",
         "cordova-plugin-headercolor": "^1.0.0",
         "cordova-plugin-ionic-keyboard": "^2.0.5",
         "cordova-plugin-ionic-webview": "^1.1.16",
