@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-row>
+          <ion-col col-auto>
+          <ion-img class="header-logo"></ion-img></ion-col>
+          <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+          </ion-row>
+      <ion-buttons start >
+          <button ion-button icon-only class="customOptions" (click)=homePage() >
+            <ion-icon name="home"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-buttons end>
+      <button class="customOptions" ion-button icon-only (click)=share() end>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+  <div id="copmarision-visualization" class="screenshot">
+    <ion-grid>
+      <h1 class="crumb-header-section">{{selectedIndicatorName}} ({{unit}})</h1>
+
+
+      <ion-grid float-right *ngIf="selectedView==2  || selectedView==1">
+          <ion-row *ngFor="let areas of lineChartData ">
+            <ion-col float-right><ion-icon name="md-square" color="{{areas.values[0].class}}"></ion-icon> {{(areas.parentAreaName?areas.parentAreaName+' / ':'')+areas.id }} </ion-col>
+      </ion-row>
+      </ion-grid>
+
+        <ion-fab right middle *ngIf='isSameSource'>
+            <button ion-fab  class='pop-button' (click)="presentPopover($event)"><ion-icon name="{{arrow}}"></ion-icon></button>        
+        </ion-fab>  
+
+        <snapshot-view-line-chart *ngIf="lineChartData && selectedView==1 " [MultiLineChartData]="lineChartData"></snapshot-view-line-chart>
+
+
+        <multi-bar-chart *ngIf="lineChartData && selectedView==2 " [MultiLineChartData]="lineChartData"></multi-bar-chart>
+
+        
+
+<ion-grid *ngIf="tableData && selectedView==3 " margin-top text-center>
+      
+    <ion-row  class="comparision-table-header" >
+      <ion-col *ngIf="isSameSource">{{tableData[0]['Source']}}</ion-col>
+      <ion-col *ngIf="selectedArea1">{{(area1Same?selectedParentArea1.areaname+'/':'')+selectedArea1.areaname}}</ion-col>
+      <ion-col *ngIf="selectedArea2">{{(area2Same?selectedParentArea2.areaname+'/':'')+selectedArea2.areaname}}</ion-col>
+      <ion-col *ngIf="selectedArea3">{{(area3Same?selectedParentArea3.areaname+'/':'')+selectedArea3.areaname}}</ion-col>
+    </ion-row>
+ 
+  
+    <ion-row *ngFor="let data of tableData " 
+      class="row comparision-view-table">
+      <ion-col *ngIf="isSameSource">{{data['Timeperiod']}}</ion-col>
+        <ion-col *ngIf="selectedArea1">{{data.area1!=undefined?data.area1:'-'}}<br>{{data.area1!=undefined && !isSameSource?
+          ('('+data.source1+
+            '-'+data.timeperiod1+')'):' '}}
+                                      </ion-col>
+
+        <ion-col *ngIf="selectedArea2">{{data.area2!=undefined?data.area2:'-'}}<br>{{data.area2!=undefined && !isSameSource?
+          ('('+data.source2+
+          '-'+data.timeperiod2+')'):' '}}</ion-col>
+
+        <ion-col *ngIf="selectedArea3">{{data.area3!=undefined?data.area3:'-'}}<br>{{data.area3!=undefined && !isSameSource?
+         ( '('+data.source3+
+          '-'+data.timeperiod3+')'):' '}}</ion-col>
+  
+    </ion-row>
+  </ion-grid>
+
+      </ion-grid>
+      </div>
+</ion-content>

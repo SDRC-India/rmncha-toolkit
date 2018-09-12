@@ -1,0 +1,63 @@
+page-geographic-profile-view {
+    .card
+    {
+        border: 1px solid #454548;
+        border-radius: 7px;
+    }
+
+    .segment-button
+    {
+        font-size: 1.5rem !important;
+        color: #101010 !important;
+    }
+
+    .comparision-button
+    {
+        text-transform: none;
+    }
+
+    .indicator-list
+    {
+        margin-top:10px;
+        max-height: 250px;
+        overflow: auto;
+    }
+
+
+    .indicator-selection-grid
+    {
+        border: 1px solid #282829;
+        margin-top:14px;
+        text-align: initial;
+        font-size: 15px;
+    }
+
+    .selection-number
+    {
+        position: relative;
+        top: 27px;
+        font-size: 12px;
+    }
+
+    .selection-number .col
+    {
+        background: white;
+        max-width: 48px;
+    }
+
+    ion-slides {
+        height: auto;
+      }
+
+      .segment-button.segment-activated {
+        border-bottom-width: 4px !important;
+    }
+
+    ion-label{
+        white-space: normal;
+    }
+
+    .indicator-list-font{
+       font-size: 1.4rem;
+    }
+}

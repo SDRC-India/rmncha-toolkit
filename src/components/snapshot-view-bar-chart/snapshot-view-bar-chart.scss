@@ -1,0 +1,46 @@
+snapshot-view-bar-chart {
+
+    .Maternal
+{
+  fill: color($colors, maternal, base);
+}
+
+.Reproductive
+{
+  fill: color($colors, reproductive, base);
+}
+
+.Child
+{
+  fill: color($colors, childHealth, base);
+}
+
+
+.Newborn{
+  fill: color($colors, newBorn, base);
+}
+
+.Health_infrastructure{
+  fill: color($colors, infrastructure, base);
+}
+
+.Human_Resource
+{
+  fill: color($colors, hr, base);
+}
+
+.Adolescent
+{
+  fill: color($colors, Adolescent, base);
+}
+
+.Demography
+{
+  fill: color($colors, demography, base);
+  
+}
+
+.screenshot{
+  background-color: white !important
+}
+}

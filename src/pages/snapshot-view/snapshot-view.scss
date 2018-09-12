@@ -1,0 +1,68 @@
+page-snapshot-view {
+  .customOptions {
+    margin-right: 12px;
+  }
+  .legend-maternal{
+    font-size: 20px;
+  }
+  .legend-reproductive{
+    font-size: 20px;
+  }
+  .legend-child{
+    font-size: 20px;
+  }
+  .legend-Newborn{
+    font-size: 20px;
+  }
+  .trend-row{
+    border: none !important
+  }
+  .first-col{
+    padding-right: 0px !important
+  }
+  .second-col{
+    padding-left: 0px !important
+  }
+
+  .card
+  {
+      border: 1px solid #454548;
+      border-radius: 7px;
+  }
+
+  .segment-button
+  {
+      font-size: 1.5rem !important;
+      color: #101010 !important;
+  }
+
+  .comparision-button
+  {
+      text-transform: none;
+  }
+
+  ion-slides {
+    height: auto;
+    font-size: 15px;
+    width:auto;
+    overflow-y: auto
+  }
+
+  .swiper-container { 
+    height: initial;
+  }
+
+  .custom-toolbar{
+    background: none !important;
+  }
+
+  .custom-toolbar .toolbar-background
+  {
+    background: none !important;
+  }
+
+  .legend
+  {
+    font-size: 15px;
+  }
+}

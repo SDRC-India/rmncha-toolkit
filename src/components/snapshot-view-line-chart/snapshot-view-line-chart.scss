@@ -1,0 +1,179 @@
+snapshot-view-line-chart {
+    .line {
+        fill: none;
+        stroke-width: 1.5px;
+      }
+
+
+      .area1
+      {
+        stroke:color($colors, area1, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+      
+      .area2
+      {
+        stroke:color($colors, area2, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+      
+      .area3
+      {
+        stroke:color($colors, area3, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+
+      .Maternal
+      {
+        stroke: color($colors, maternal, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+      
+      .Reproductive
+      {
+        stroke: color($colors, reproductive, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+      
+      .Child
+      {
+        stroke: color($colors, childHealth, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+      
+      
+      .Newborn{
+        stroke: color($colors, newBorn, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+
+      .Health_infrastructure{
+        stroke: color($colors, infrastructure, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+
+.Human_Resource
+      {
+        stroke: color($colors, hr, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+
+  .Adolescent
+      {
+        stroke: color($colors, Adolescent, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+
+  .Demography
+    {
+        stroke: color($colors, demography, base);
+        fill: none !important;
+        stroke-width: 1.5px;
+      }
+
+      .screenshot{
+        background-color: white !important
+      }
+
+
+      .grid line {
+        stroke: lightgrey;
+        stroke-opacity: 0.7;
+        shape-rendering: crispEdges;
+      }
+      
+      .grid path {
+        stroke-width: 0;
+      }
+
+
+      .area1_dot
+      {
+        stroke:color($colors,  dot-stroke1, base);
+        fill: color($colors, area1, base);
+        stroke-width: 1px;
+      }
+      
+      .area2_dot
+      {
+        stroke:color($colors,dot-stroke2, base);
+        fill: color($colors, area2, base);
+        stroke-width: 1px;
+      }
+      
+      .area3_dot
+      {
+        stroke:color($colors,dot-stroke3, base);
+        fill: color($colors, area3, base);
+        stroke-width: 1px;
+      }
+
+      .Maternal_dot
+      {
+        stroke:color($colors,  dot-maternal, base);
+        fill: color($colors, maternal, base);
+        stroke-width: 1px;
+      }
+      
+      .Reproductive_dot
+      {
+        stroke:color($colors,  dot-reproductive, base);
+        fill: color($colors, reproductive, base);
+        stroke-width: 1px;
+      }
+      
+      .Child_dot
+      {
+        stroke:color($colors,  dot-childHealth, base);
+        fill: color($colors, childHealth, base);
+        stroke-width: 1px;
+      }
+      
+      
+      .Newborn_dot
+      {
+        stroke:color($colors,  dot-newBorn, base);
+        fill: color($colors, newBorn, base);
+        stroke-width: 1px;
+      }
+
+
+  .Health_infrastructure_dot{
+        stroke: color($colors, dot-infrastructure, base);
+        fill: color($colors, infrastructure, base);
+        stroke-width: 1px;
+      }
+
+.Human_Resource_dot
+      {
+        stroke: color($colors, dot-hr, base);
+        fill: color($colors, hr, base);;
+        stroke-width: 1px;
+      }
+
+  .Adolescent_dot
+      {
+        stroke: color($colors, dot-Adolescent, base);
+        fill: color($colors, Adolescent, base);
+        stroke-width: 1px;
+      }
+
+  .Demography_dot
+    {
+        stroke: color($colors, dot-demography, base);
+        fill: color($colors, demography, base);
+        stroke-width: 1px;
+      }
+
+
+}

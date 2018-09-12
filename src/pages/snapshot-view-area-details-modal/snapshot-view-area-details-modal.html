@@ -1,0 +1,26 @@
+
+<ion-header>
+
+  <ion-navbar color="header">
+    <ion-title>Area List</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)=close()>
+        <ion-icon md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="home_bg">
+  <ion-card *ngFor="let area of areaList">
+    <ion-card-content>
+      <ion-row >
+        <ion-col  col-10>
+       {{area.area.areaname}}
+        </ion-col >
+        <ion-col col-2>  {{area.value}} </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

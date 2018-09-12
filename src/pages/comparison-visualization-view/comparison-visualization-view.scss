@@ -1,0 +1,21 @@
+page-comparison-visualization-view {
+
+   
+
+    .comparision-view-table .col
+    {
+        border: 1px solid black;
+        font-size: 15px;
+    }
+
+    .comparision-table-header ion-col{
+        background: color($colors, primary, base);
+        font-size: 15px;
+        align-items: center;
+        color:white;
+        border: 1px solid black;
+      }
+
+      
+
+}

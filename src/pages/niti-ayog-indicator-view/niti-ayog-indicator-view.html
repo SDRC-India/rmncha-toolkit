@@ -1,0 +1,88 @@
+
+<ion-header>
+    <ion-navbar color="header">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      
+      <ion-buttons start>
+        <button class="customOptions" ion-button icon-only (click)=share()>
+          <ion-icon name="share"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding class="home_bg">
+
+  <ion-grid>
+    <h1 class="crumb-header-section">Aspirational Districts</h1>
+ </ion-grid>
+ 
+  <ion-grid *ngIf="areaLevel && areaList.length" class="area-selection-grid">
+    <ion-card >
+      <ion-item>
+        <ion-label>State</ion-label>
+        <ion-select [(ngModel)]="state" (ionChange)="district=null"  interface="popover">
+          <ion-option *ngFor="let area  of ( areaList | comparisonViewAreaFilter : areaLevel  : 'IND' )" [value]="area">{{area.areaname}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card >
+      <ion-item>
+        <ion-label>District</ion-label>
+        <ion-select [(ngModel)]="district" [disabled]="!state" interface="popover" (ionChange)="districtSelect()">
+          <ion-option *ngFor="let area  of ( areaList | comparisonViewAreaFilter : areaLevel : (state?state.code:'') )" [value]="area">{{area.areaname}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+  </ion-grid>
+
+
+    <ion-grid *ngIf="nitiAyogData&&district">
+        <ion-row >
+            <ion-col *ngFor="let sector of sectors" col-4>
+              <ion-icon name="md-square" color="{{sector.replace(' ','_')}}">
+              </ion-icon>  {{sector}}
+            </ion-col>
+      </ion-row >
+  </ion-grid>
+
+<ion-grid margin-top text-center text-wrap class="table"  *ngIf="nitiAyogData&&district">
+    <ion-row class="snapshot-table-header">
+        <ion-col col-3>Indicator</ion-col>
+        <ion-col col-3>Unit</ion-col>
+        <ion-col col-2>{{selectedArea.areaname}}</ion-col>
+        <ion-col col-2>{{selectedArea.concatenedName}}</ion-col>
+        <ion-col col-2>India</ion-col>
+
+      </ion-row>
+      <p *ngIf="nitiAyogData  && !nitiAyogData.length" class="no-data-available">No data available</p> 
+      <p *ngIf="nitiAyogData && !(nitiAyogData| nitiAyogDataSearch
+      : searchQuery ).length  && nitiAyogData.length" class="no-data-available">No data available</p>   
+      <div class="scrolling-content" [ngStyle]="{'height':height+'px'}">
+        <ion-row  *ngFor="let data of (nitiAyogData| nitiAyogDataSearch
+        : searchQuery )"  (click)="getNitiAyogVisualizationData(data)" class="snapshot-table-data {{data.indicator.recSector.sectorName.replace(' ','_')}} row">
+          <ion-col col-3 text-left>{{data.indicator.iName}}</ion-col>
+          <ion-col col-3>{{data.indicator.unit.unitName}}</ion-col>
+          <ion-col col-2>{{data.district?data.district:'-'}}<br>
+            {{data.district? ('('+data.districtSource+
+            '-'+data.districtTimePeriod+')'):''}}</ion-col>
+          <ion-col col-2>{{data.state?data.state:'-'}}
+            <br>
+            {{data.state? ('('+data.stateSource+
+            '-'+data.stateTimePeriod+')'):''}}
+          </ion-col>
+          <ion-col col-2>{{data.country?data.country:'-'}}
+            <br>
+            {{data.country? ('('+data.countrySource+
+            '-'+data.countryTimePeriod+')'):''}}
+          </ion-col>
+
+      </ion-row>   
+      </div>
+      </ion-grid>
+
+</ion-content>

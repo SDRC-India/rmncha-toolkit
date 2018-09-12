@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="header">
+      <ion-row>
+          <ion-col col-auto>
+          <ion-img class="header-logo"></ion-img></ion-col>
+          <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+          </ion-row>
+    <ion-buttons start>
+      <button class="customOptions" ion-button icon-only (click)=share()>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div id="screen-snapshot-indicator-id" class= "screenshot">
+   <div class="snapshot-indicator-view-section-1">
+    <h1 class="crumb-header-section">{{siv.headerText}}</h1>
+
+     <!-- section-1 -->
+    <ion-grid>
+      <ion-row class="snapshot-indicator-view-section-1-row">
+        <ion-col col-7 class="snapshot-indicator-view-section-1-col">
+          {{siv.indicatorName}}
+        </ion-col>
+        <ion-col col-4 class="snapshot-indicator-view-section-1-col">
+          {{siv.indicatorValue}} ({{data.snapshotIndicator.unit}})
+        </ion-col>
+      </ion-row>
+      <ion-row  *ngIf="siv.rankingText.length">
+        <ion-col col-7 class="snapshot-indicator-view-section-1-col">
+          {{siv.rankingText}}
+        </ion-col>
+        <ion-col col-4 class="snapshot-indicator-view-section-1-col">
+          {{siv.ranking}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <hr>
+   <!-- section-2 -->
+
+  <div class="snapshot-indicator-view-section-2" *ngIf="showAverageView && (siv.belowAreaLevelNumber || siv.aboveAreaLevelNumber)">
+
+    <p *ngIf="siv.aboveAreaLevelNumber">Equal to/ Above {{siv.aboveAreaLevelLeft}} average = <span class="link" (click)="areaDetails(true)">{{siv.aboveAreaLevelNumber}} {{siv.aboveAreaLevelRight}}</span></p>
+    <p *ngIf="siv.belowAreaLevelNumber">Below {{siv.belowAreaLevelLeft}} average = <span class="link" (click)="areaDetails(false)">{{siv.belowAreaLevelNumber}} {{siv.belowAreaLevelRight}}</span></p>
+
+  </div>
+  <ion-fab right middle>
+      <button ion-fab  class='pop-button' (click)="presentPopover($event)"><ion-icon name="{{arrow}}"></ion-icon></button>
+  </ion-fab>
+
+  <hr *ngIf="showAverageView && (siv.belowAreaLevelNumber || siv.aboveAreaLevelNumber)">
+
+
+   <snapshot-view-line-chart *ngIf="lineChartData && showChart=='line'" [MultiLineChartData]="lineChartData"></snapshot-view-line-chart>
+  <snapshot-view-tabular-view *ngIf="showChart=='table'" [tableData]="tableData"></snapshot-view-tabular-view>
+  <!--<snapshot-view-map-view></snapshot-view-map-view>-->
+  <snapshot-view-bar-chart *ngIf="lineChartData && showChart=='bar'" [barChartData]="lineChartData[0].values" [indicatorType]="data.snapshotIndicator.theme"  ></snapshot-view-bar-chart>
+  <map-view-chart *ngIf="mapJson && mapJson.has('legend') && showChart=='map'" [mapJson]="mapJson" [areaCode]="data.snapshotIndicator.area.code"> </map-view-chart>
+</div>
+</ion-content>

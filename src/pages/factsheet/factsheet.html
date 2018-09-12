@@ -1,0 +1,40 @@
+
+<ion-header>
+
+  <ion-navbar color="header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+ 
+      <ion-row>
+        <ion-col col-auto>
+        <ion-img class="header-logo"></ion-img></ion-col>
+        <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+        </ion-row>
+ 
+  </ion-navbar>
+
+</ion-header >
+
+<ion-content padding class="home_bg">
+    <h1 class="crumb-header-section">Factsheets</h1>
+
+    <ion-grid  *ngFor="let source of factsheetData">
+
+       
+        <button  icon-start text-left block ion-button class="comparision-button" (click)="selectSource(source)" >
+            <ion-icon name="add" *ngIf="!(selectedSource==source && open)"></ion-icon>
+            <ion-icon name="remove" *ngIf="selectedSource==source && open"></ion-icon>
+            {{source.source}}
+             </button>
+             
+
+             <ion-list *ngIf="selectedSource==source && open" class="indicator-list">
+                <ion-item  *ngFor="let round of  source.round " >
+                  <ion-label class="indicator-list-font" (click)="openFactsheet(round)">{{round.sourceName}}</ion-label>
+                </ion-item>
+              </ion-list>
+        </ion-grid>
+
+
+</ion-content>

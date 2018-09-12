@@ -1,0 +1,16 @@
+page-niti-ayog-visualization-view {
+
+    .comparision-view-table .col
+    {
+        border: 1px solid black;
+    }
+
+    .comparision-table-header ion-col{
+        background: color($colors, primary, base);
+        font-size: 16px;
+        align-items: center;
+        color:white;
+        border: 1px solid black;
+      }
+
+}

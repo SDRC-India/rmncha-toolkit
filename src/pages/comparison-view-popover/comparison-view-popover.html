@@ -1,0 +1,5 @@
+<ion-list no-lines>    
+    <button ion-item (click)="close(1)" [disabled]="!comparisionViewSelection.isLineAvailable">Line chart</button>
+    <button ion-item (click)="close(2)" [disabled]="!comparisionViewSelection.isBarAvailable">Bar chart</button>
+    <button ion-item (click)="close(3)" [disabled]="!comparisionViewSelection.isTableAvailable">Tabular view</button>
+</ion-list>

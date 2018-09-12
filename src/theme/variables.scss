@@ -1,0 +1,152 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #208bf7,
+  secondary:  #9ca683,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  increased: #6fb7e8,
+  decreased: #fdc481,
+  hr-color: #000000,
+  reproductive: #6fb7e8,
+  childHealth: #fdc481,
+  maternal:#eaa62a,
+  newBorn:#b8e2b8,
+  area1:#b8e2b8,
+  area2:#eaa62a,
+  area3:#6fb7e8,
+  sirmncha-green: #008000,
+  sirmncha-gray:#808080,
+  sirmncha-blue:#022380,
+  hyperlink: #258,
+  dot-stroke1:#44d444,
+  dot-stroke2:#bf7f09,
+  dot-stroke3:#3782b5,
+  dot-reproductive:#3782b5,
+  dot-childHealth:#f39e3d,
+  dot-maternal:#ca8606,
+  dot-newBorn:#44d444,
+  no-data:#9c9a9a,
+  range1:#a4f38a,
+  range2:#66a85e,
+  range3:#216335,
+  Adolescent:#E7E568,
+  infrastructure:#6CA7F9,
+  hr:#76D6CC ,
+  demography:#EDBB50 ,
+  dot-Adolescent:#ccca3c,
+  dot-infrastructure:#2278f1,
+  dot-hr:#2ba599 ,
+  dot-demography:#b88a28,
+  header:#1e5799,
+  Reproductive: #6fb7e8,
+  Childcare: #fdc481,
+  Maternal:#eaa62a,
+  Neonatal:#b8e2b8,
+  Health_infrastructure:#6CA7F9,
+  Human_Resource:#76D6CC ,
+  Demography:#EDBB50,
+  Child:#fdc481,
+  Newborn:#b8e2b8
+
+
+
+);
+
+@font-face {
+  font-family: GlobalFont;
+  src: url("../assets/fonts/Montserrat-Medium.ttf");
+  }
+
+  body, span, button, h1, h2, h3, h4, h5, h6, p, ion-item, ion-title {
+  font-family: 'GlobalFont' !important;
+  }
+
+  $font-size-base:14px;
+
+
+  // making the height of radio select pop up fixed
+
+  // $alert-md-content-max-height: 180px !default;
+
+  // $alert-ios-content-max-height: 180px !default;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

@@ -1,0 +1,38 @@
+page-custom-view-visualization-view {
+
+    .comparision-view-table .col
+    {
+        border: 1px solid black;
+    }
+
+    .comparision-table-header ion-col{
+        background: color($colors, primary, base);
+        font-size: 16px;
+        align-items: center;
+        color:white;
+        border: 1px solid black;
+      }
+
+
+      .card-md
+      {
+          border: 1px solid #282829
+      }
+      .area-selection-grid
+      {
+          border: 1px solid #282829
+      }
+
+      .segment-button
+      {
+          font-size: 1.5rem !important;
+          color: #101010 !important;
+      }
+      ion-slides {
+          height: auto;
+        }
+  
+        .segment-button.segment-activated {
+          border-bottom-width: 4px !important;
+      }
+}

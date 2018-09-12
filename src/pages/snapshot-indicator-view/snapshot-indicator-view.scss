@@ -1,0 +1,23 @@
+page-snapshot-indicator-view {
+    .snapshot-indicator-view-section-1{
+        padding: 15px;
+    }
+    .snapshot-indicator-view-section-1-row{
+        margin-bottom: 10px;
+    }
+    .snapshot-indicator-view-section-1-col{
+        background-color: color($colors, light, base);
+        margin-right: 10px;
+    }
+    hr {
+        height: 1px;
+        background-color: color($colors, hr-color, base) !important;
+    }
+    .snapshot-indicator-view-section-2{
+        padding: 15px;
+    }
+    .link {
+      color: color($colors, hyperlink, base) ;
+      text-decoration: underline;
+    }
+}

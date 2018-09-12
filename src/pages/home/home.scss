@@ -1,0 +1,63 @@
+page-home {
+  .button-list {
+    margin-bottom: 50px;
+  }
+  .home-button {
+    min-height: 72px;
+    text-transform: none;
+  }
+  .logodiv {
+    margin-top: 0px auto;
+    text-align: center;
+  }
+  // .logo{
+  //   margin-top: 100px;
+  //   background: url('../assets/imgs/homedesign.png') no-repeat ;
+  //   -webkit-background-size: 100%;
+  //   -moz-background-size: 100%;
+  //   background-size: 100% 100%;
+  //   background-repeat: no-repeat;
+  //   width: 200px;
+  //   height: 300px;
+  // }
+  .gap_snapshot {
+    margin-top: 0px;
+  }
+  .gap {
+    margin-top: 30px;
+  }
+  .home_bg {
+    background-image: url('../assets/imgs/bgimage.jpg');
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
+
+     .comparision-button
+    {
+        max-height: 20%;
+        text-transform: none;
+        margin-top:20px;
+        width : 50%;
+        align-content: center;
+        font-size: 13px;
+    }
+
+    .profile-button
+    {
+      max-height: 20%;
+      text-transform: none;
+      margin-top:20px;
+      width : 100%;
+      align-content: center;
+      font-size: 13px;
+    }
+
+    .footer_button
+    {
+      font-size: 10px;
+    }
+
+  }

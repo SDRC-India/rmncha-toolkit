@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar color="header">
+    <ion-buttons end>
+      <button class="customOptions" ion-button icon-only (click)=share()>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home_bg">
+  <div id="comparison-indicator-view">
+    <ion-grid>
+       <h1 class="crumb-header-section">KPI</h1>
+        </ion-grid>
+
+        <ion-grid *ngIf="comparisionData">
+            <ion-row >
+                <ion-col *ngFor="let sector of sectors" col-3>
+                  <ion-icon name="md-square" color="{{sector.replace(' ','_')}}">
+                  </ion-icon><br>{{sector}}
+                </ion-col>
+          </ion-row >
+        </ion-grid>
+    <ion-grid margin-top text-center text-wrap class="table">
+      
+        <ion-row  class="snapshot-table-header" >
+          <ion-col col-3>Indicator</ion-col>
+          <ion-col col-3>Unit</ion-col>
+          <!-- For 2 selected areas -->
+          <ion-col *ngIf="selectedArea1 && areasArray && areasArray.length==2" col-3>{{(area1Same?selectedParentArea1.areaname+'/':'')+selectedArea1.areaname}}</ion-col>
+          <ion-col *ngIf="selectedArea2 && areasArray && areasArray.length==2" col-3>{{(area2Same?selectedParentArea2.areaname+'/':'')+selectedArea2.areaname}}</ion-col>
+          <ion-col *ngIf="selectedArea3 && areasArray && areasArray.length==2" col-3>{{(area3Same?selectedParentArea3.areaname+'/':'')+selectedArea3.areaname}}</ion-col>
+
+          <!-- For 3 selected areas -->
+          <ion-col *ngIf="selectedArea1 && areasArray && areasArray.length==3" col-2>{{(area1Same?selectedParentArea1.areaname+'/':'')+selectedArea1.areaname}}</ion-col>
+          <ion-col *ngIf="selectedArea2 && areasArray && areasArray.length==3" col-2>{{(area2Same?selectedParentArea2.areaname+'/':'')+selectedArea2.areaname}}</ion-col>
+          <ion-col *ngIf="selectedArea3 && areasArray && areasArray.length==3" col-2>{{(area3Same?selectedParentArea3.areaname+'/':'')+selectedArea3.areaname}}</ion-col>
+
+
+        </ion-row>
+        <p *ngIf="comparisionData  && !comparisionData.length" class="no-data-available">No data available</p> 
+        <p *ngIf=" comparisionData && comparisionData.length && !((comparisionData | comparisonViewDataSearch
+        : searchQuery :(selectedArea1?selectedArea1.areaname:'')
+        :(selectedArea2?selectedArea2.areaname:'') :(selectedArea3?selectedArea3.areaname:'') ).length)" class="no-data-available">No data available</p>   
+      <!-- areasArray -->
+      <div class="scrolling-content" [ngStyle]="{'height':height+'px'}">
+        <ion-row *ngFor="let data of ( comparisionData | comparisonViewDataSearch
+         : searchQuery :(selectedArea1?selectedArea1.areaname:'')
+         :(selectedArea2?selectedArea2.areaname:'') :(selectedArea3?selectedArea3.areaname:'') )" 
+          class="{{data.theme}} row"  (click)='viewIndicatorData(data)'>
+            <ion-col col-3 text-left>{{data.indicator}}</ion-col>
+
+            <ion-col col-3>{{data.unit}}</ion-col>
+
+            <!-- For 2 selected areas -->
+            <ion-col *ngIf="selectedArea1 && areasArray && areasArray.length==2" col-3>{{data.area1!=undefined?data.area1:'-'}}<br>{{data.area1!=undefined?
+              ('('+data.source1+
+                '-'+data.timeperiod1+')'):' '}}
+                                          </ion-col>
+
+            <ion-col *ngIf="selectedArea2 && areasArray && areasArray.length==2" col-3>{{data.area2!=undefined?data.area2:'-'}}<br>{{data.area2!=undefined?
+              ('('+data.source2+
+              '-'+data.timeperiod2+')'):' '}}</ion-col>
+
+            <ion-col *ngIf="selectedArea3 && areasArray && areasArray.length==2" col-3>{{data.area3!=undefined ?data.area3:'-'}}<br>{{data.area3!=undefined?
+             ( '('+data.source3+
+              '-'+data.timeperiod3+')'):' '}}</ion-col>
+
+             <!-- For 3 selected areas -->
+            <ion-col *ngIf="selectedArea1 && areasArray && areasArray.length==3" col-2>{{data.area1!=undefined?data.area1:'-'}}<br>{{data.area1!=undefined?
+              ('('+data.source1+
+                '-'+data.timeperiod1+')'):' '}}
+                                          </ion-col>
+
+            <ion-col *ngIf="selectedArea2 && areasArray && areasArray.length==3" col-2>{{data.area2!=undefined?data.area2:'-'}}<br>{{data.area2!=undefined?
+              ('('+data.source2+
+              '-'+data.timeperiod2+')'):' '}}</ion-col>
+
+            <ion-col *ngIf="selectedArea3 && areasArray && areasArray.length==3" col-2>{{data.area3!=undefined ?data.area3:'-'}}<br>{{data.area3!=undefined?
+             ( '('+data.source3+
+              '-'+data.timeperiod3+')'):' '}}</ion-col>
+
+        </ion-row>
+      </div>
+
+      </ion-grid>
+    </div>
+</ion-content>

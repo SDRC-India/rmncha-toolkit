@@ -1,0 +1,75 @@
+map-view-chart {
+
+    #legend {
+        padding: 1.5em 0 0 1.5em;
+    }
+    
+    li.key {
+        border-top-width: 15px;
+        border-top-style: solid;
+        font-size: .75em;
+        width: 10%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .range1
+    {
+        fill:color($colors, range1, base);
+        background-color: color($colors, range1, base);
+    }
+
+    .range2
+    {
+        fill:color($colors, range2, base);
+        background-color: color($colors, range2, base);
+    }
+
+    .range3
+    {
+        fill:color($colors, range3, base);
+        background-color: color($colors, range3, base);
+    }
+
+    .data-not-available
+    {
+        fill:color($colors, no-data, base);  
+        background-color: color($colors, no-data, base);
+    }
+
+    .legnedblock {
+        height: 20px;
+        width: 20px;
+        margin: 3px 0px 3px 10px;
+    
+    }
+    .legend_key {
+        font-size: 15px;
+        margin-top: 5px;
+         margin-left: 5px;
+    }
+
+    li
+    {
+        list-style: none;
+        display: inline-flex;
+    }
+    ul
+    {
+        display: inline-flex;
+    }
+
+    .map-selected
+    {
+        stroke: #f0e00b !important;
+        stroke-width: 3px !important;
+    }
+
+    .mesh {
+        fill: none;
+        stroke: #333;
+        stroke-width: .5px;
+        stroke-linejoin: round;
+      }
+    
+}

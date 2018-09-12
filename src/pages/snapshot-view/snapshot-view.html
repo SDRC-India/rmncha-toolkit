@@ -1,0 +1,197 @@
+<ion-header no-border>
+  <ion-navbar color="header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
+    <ion-buttons start>
+      <button class="customOptions" ion-button icon-only (click)=share()>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
+  </ion-navbar>
+  <ion-toolbar class="custom-toolbar" no-border>
+  <ion-segment [(ngModel)]="areaLevel">
+      <ion-segment-button *ngFor="let level of areaLevels;let i = index" [value]="level" (click)="selectAreaLevel(level);selectTab(i)" >
+        {{level.areaLevelName}}
+      </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="home_bg has-header has-subheader">
+
+     
+      <ion-grid>
+          <ion-card >
+              <ion-item>
+                  <ion-label>Snapshot Type</ion-label>
+                  <ion-select [(ngModel)]="selectedList" (ionChange)="getSnapshotProfile(selectedList.selectionValue,selectedList.sectorValue)" interface="popover">
+                    <ion-option *ngFor="let sector of selectionList" [value]="sector" >{{sector.name}}</ion-option>
+                  </ion-select>
+              </ion-item>
+            </ion-card>
+            </ion-grid>
+
+<ion-slides #pageSlider (ionSlideWillChange)="changeWillSlide($event)">
+  <ion-slide >            
+      <ion-grid *ngIf="selectedList && selectedList.selectionValue!=profileTypes.ThemeWise">
+          <ion-row class="legend">
+              <ion-col *ngFor="let sector of sectors" col-3>
+                <ion-icon name="md-square" color="{{sector.replace(' ','_')}}">
+                </ion-icon><br>{{sector}}
+              </ion-col>
+        </ion-row >
+      </ion-grid>
+
+    <ion-grid margin-top text-center class="table">
+        <ion-row class="snapshot-table-header">
+          <ion-col col-3>Indicator</ion-col>
+          <ion-col col-2>Value</ion-col>
+          <ion-col col-2>Unit</ion-col>
+          <ion-col col-3>Source</ion-col>
+          <ion-col col-2>Trend</ion-col>
+        </ion-row>
+        <p *ngIf="indicatorList  && !indicatorList.length" class="no-data-available">No data available</p> 
+        <p *ngIf="indicatorList  && !(indicatorList| snapshotViewDataSearch
+        : searchQuery ).length  && indicatorList.length" class="no-data-available">No data available</p>   
+        <div class="scrolling-content" [ngStyle]="{'height':height+'px'}">
+          <ion-row  *ngFor="let indicator of (indicatorList| snapshotViewDataSearch
+        : searchQuery ); let i = index" (click)="goToIndicatorView(indicator)" class="snapshot-table-data {{indicator.theme}} row">
+            <ion-col col-3 text-left>{{indicator.indicator.iName}}</ion-col>
+            <ion-col col-2>{{indicator.value}}</ion-col>
+            <ion-col col-2>{{indicator.unit}}</ion-col>
+            <ion-col col-3>{{indicator.source.sourceName}}<br/>({{indicator.timePeriod}})</ion-col>
+            <ion-col col-2>
+              <ion-icon color="danger" name="arrow-round-down" *ngIf="indicator.trend=='dn' && !indicator.indicator.nucolor"></ion-icon>
+              <ion-icon color="sirmncha-green" name="arrow-round-up"  *ngIf="indicator.trend=='up' && !indicator.indicator.nucolor"></ion-icon>
+              <ion-icon color="sirmncha-blue" name="remove"  *ngIf="indicator.trend=='na' || indicator.indicator.nucolor || indicator.trend=='eq'"></ion-icon>
+
+            </ion-col>
+        </ion-row>   
+        </div>
+       
+      </ion-grid>
+    </ion-slide>
+
+    <ion-slide >
+
+        <ion-grid>
+       
+            <ion-card *ngIf="areaLevel && areaLevel.isStateAvailable">
+                <ion-item>
+                    <ion-label>State</ion-label>
+                    <ion-select [(ngModel)]="state" (ionChange)="selectArea(areaLevel)" interface="popover">
+                      <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel : 'IND' )" [value]="area" >{{area.areaname}}</ion-option>
+                    </ion-select>
+                </ion-item>
+              </ion-card>
+              </ion-grid>
+
+        <ion-grid *ngIf="selectedList && selectedList.selectionValue!=profileTypes.ThemeWise">
+            <ion-row class="legend">
+                <ion-col *ngFor="let sector of stateSectors" col-3>
+                  <ion-icon name="md-square" color="{{sector.replace(' ','_')}}">
+                  </ion-icon><br>{{sector}}
+                </ion-col>
+          </ion-row >
+        </ion-grid>
+  
+      <ion-grid margin-top text-center class="table" *ngIf="stateIndicatorList">
+          <ion-row class="snapshot-table-header">
+            <ion-col col-3>Indicator</ion-col>
+            <ion-col col-2>Value</ion-col>
+            <ion-col col-2>Unit</ion-col>
+            <ion-col col-3>Source</ion-col>
+            <ion-col col-2>Trend</ion-col>
+          </ion-row>
+          <p *ngIf="stateIndicatorList  && !stateIndicatorList.length" class="no-data-available">No data available</p> 
+          <p *ngIf="stateIndicatorList  && !(stateIndicatorList| snapshotViewDataSearch
+          : searchQuery ).length  && stateIndicatorList.length" class="no-data-available">No data available</p>   
+          <div class="scrolling-content" [ngStyle]="{'height':height+'px'}">
+            <ion-row  *ngFor="let indicator of (stateIndicatorList| snapshotViewDataSearch
+          : searchQuery ); let i = index" (click)="goToIndicatorView(indicator)" class="snapshot-table-data {{indicator.theme}} row">
+              <ion-col col-3 text-left>{{indicator.indicator.iName}}</ion-col>
+              <ion-col col-2>{{indicator.value}}</ion-col>
+              <ion-col col-2>{{indicator.unit}}</ion-col>
+              <ion-col col-3>{{indicator.source.sourceName}}<br/>({{indicator.timePeriod}})</ion-col>
+              <ion-col col-2>
+                <ion-icon color="danger" name="arrow-round-down" *ngIf="indicator.trend=='dn' && !indicator.indicator.nucolor"></ion-icon>
+                <ion-icon color="sirmncha-green" name="arrow-round-up"  *ngIf="indicator.trend=='up' && !indicator.indicator.nucolor"></ion-icon>
+                <ion-icon color="sirmncha-blue" name="remove"  *ngIf="indicator.trend=='na' || indicator.indicator.nucolor || indicator.trend=='eq'"></ion-icon>
+            
+              </ion-col>
+          </ion-row>   
+          </div>
+         
+        </ion-grid>
+      </ion-slide>
+
+
+      <ion-slide>
+
+          <ion-grid>
+
+              <ion-card *ngIf="areaLevel && areaLevel.isStateAvailable">
+                  <ion-item>
+                      <ion-label>State</ion-label>
+                      <ion-select [(ngModel)]="districtState" (ionChange)="district=null" interface="popover">
+                        <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel : 'IND' )" [value]="area" >{{area.areaname}}</ion-option>
+                      </ion-select>
+                  </ion-item>
+                </ion-card>
+               
+                <ion-card *ngIf="areaLevel && areaLevel.isDistrictAvailable">
+                    <ion-item >
+                        <ion-label>District</ion-label>
+                        <ion-select [(ngModel)]="district" (ionChange)="selectArea(areaLevel)" [disabled]="!districtState" interface="popover" >
+                          <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel: (districtState?districtState.code:'') )" [value]="area" >{{area.areaname}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                  </ion-card>
+                </ion-grid>
+                
+          <ion-grid *ngIf="districtSectors.length  && district && selectedList.selectionValue!=profileTypes.ThemeWise">
+              <ion-row class="legend">
+                  <ion-col *ngFor="let sector of districtSectors" col-3>
+                    <ion-icon name="md-square" color="{{sector.replace(' ','_')}}">
+                    </ion-icon><br>{{sector}}
+                  </ion-col>
+            </ion-row >
+          </ion-grid>
+    
+        <ion-grid margin-top text-center class="table" *ngIf="districtIndicatorList">
+            <ion-row class="snapshot-table-header">
+              <ion-col col-3>Indicator</ion-col>
+              <ion-col col-2>Value</ion-col>
+              <ion-col col-2>Unit</ion-col>
+              <ion-col col-3>Source</ion-col>
+              <ion-col col-2>Trend</ion-col>
+            </ion-row>
+            <p *ngIf="districtIndicatorList  && !districtIndicatorList.length" class="no-data-available">No data available</p> 
+            <p *ngIf="districtIndicatorList  && !(districtIndicatorList| snapshotViewDataSearch
+            : searchQuery ).length  && districtIndicatorList.length" class="no-data-available">No data available</p>   
+            <div class="scrolling-content" [ngStyle]="{'height':height+'px'}">
+              <ion-row  *ngFor="let indicator of (districtIndicatorList| snapshotViewDataSearch
+            : searchQuery ); let i = index" (click)="goToIndicatorView(indicator)" class="snapshot-table-data {{indicator.theme}} row">
+                <ion-col col-3 text-left>{{indicator.indicator.iName}}</ion-col>
+                <ion-col col-2>{{indicator.value}}</ion-col>
+                <ion-col col-2>{{indicator.unit}}</ion-col>
+                <ion-col col-3>{{indicator.source.sourceName}}<br/>({{indicator.timePeriod}})</ion-col>
+                <ion-col col-2>
+                  <ion-icon color="danger" name="arrow-round-down" *ngIf="indicator.trend=='dn' && !indicator.indicator.nucolor"></ion-icon>
+                  <ion-icon color="sirmncha-green" name="arrow-round-up"  *ngIf="indicator.trend=='up' && !indicator.indicator.nucolor"></ion-icon>
+                  <ion-icon color="sirmncha-blue" name="remove"  *ngIf="indicator.trend=='na' || indicator.indicator.nucolor || indicator.trend=='eq'"></ion-icon>
+
+                </ion-col>
+            </ion-row>   
+            </div>
+           
+          </ion-grid>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

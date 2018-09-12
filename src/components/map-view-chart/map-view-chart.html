@@ -1,0 +1,18 @@
+<!-- Generated template for the MapViewChartComponent component -->
+
+<div id="map">
+   
+    <ul *ngIf="getKeys(mapJson).length>2">
+        <li *ngFor="let legend of legends">
+        
+            <span class="legnedblock {{legend.cssClass}}"></span> 
+          <span class="legend_key">{{legend.startInterval}} - {{legend.stopInterval}}</span> 
+          </li>
+          <li *ngIf="legends">
+            <span class="legnedblock data-not-available"></span> 
+          <span class="legend_key">Data Not Reported</span> 
+          </li>
+    
+      </ul>
+    
+</div>

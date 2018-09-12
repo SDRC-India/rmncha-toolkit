@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-navbar color="header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-row>
+        <ion-col col-auto>
+        <ion-img class="header-logo"></ion-img></ion-col>
+        <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+        </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home_bg">
+    <ion-grid>
+  <h1 class="crumb-header-section">Comparative Profile</h1>
+  </ion-grid>
+    <ion-grid>
+    <button ion-button block class="comparision-button" (click)="button1Click()">
+        Add Area 1
+      </button>
+      <ion-grid *ngIf="area1Click" class="area-selection-grid">
+          <ion-card >
+              <ion-item>
+                  <ion-label>Area Level</ion-label>
+                  <ion-select [(ngModel)]="areaLevel1" (ionChange)="state1=null;district1=null" interface="popover">
+                    <ion-option  *ngFor="let level of areaLevel " [value]="level">{{level.areaLevelName}}</ion-option>
+                  </ion-select>
+              </ion-item>
+            </ion-card>
+            <ion-card *ngIf="areaLevel1 && areaLevel1.isStateAvailable">
+                <ion-item>
+                    <ion-label>State</ion-label>
+                    <ion-select [(ngModel)]="state1" (ionChange)="district1=null" interface="popover">
+                      <ion-option *ngFor="let area  of ( area | comparisonViewAreaFilter : areaLevel1 : 'IND' )" [value]="area" >{{area.areaname}}</ion-option>
+                    </ion-select>
+                </ion-item>
+              </ion-card>
+              <ion-card *ngIf="areaLevel1 && areaLevel1.isDistrictAvailable">
+                  <ion-item >
+                      <ion-label>District</ion-label>
+                      <ion-select [(ngModel)]="district1" [disabled]="!state1" interface="popover">
+                        <ion-option *ngFor="let area  of ( area | comparisonViewAreaFilter : areaLevel1 : (state1?state1.code:'') )" [value]="area" >{{area.areaname}}</ion-option>
+                      </ion-select>
+                  </ion-item>
+                </ion-card>
+      </ion-grid>
+      <span *ngIf='areaLevel1'>{{areaLevel1.areaLevelName}}{{state1?('/'+state1.areaname):''}}
+        {{district1?('/'+district1.areaname):''}}</span>
+    </ion-grid>
+  <ion-grid>
+      <button ion-button block class="comparision-button" (click)="button2Click()" >
+          Add Area 2
+        </button>
+        <ion-grid  *ngIf="area2Click" class="area-selection-grid">
+            <ion-card >
+                <ion-item>
+                    <ion-label>Area Level</ion-label>
+                    <ion-select [(ngModel)]="areaLevel2" interface="popover" (ionChange)="state2=null;district2=null;scrollDown();">
+                      <ion-option *ngFor="let level of areaLevel" [value]="level">{{level.areaLevelName}}</ion-option>
+                    </ion-select>
+                </ion-item>
+              </ion-card>
+              <ion-card *ngIf="areaLevel2 && areaLevel2.isStateAvailable">
+                  <ion-item>
+                      <ion-label>State</ion-label>
+                      <ion-select [(ngModel)]="state2" interface="popover" (ionChange)="district2=null">
+                        <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel2 : 'IND' )" [value]="area" >{{area.areaname}}</ion-option>
+                      </ion-select>
+                  </ion-item>
+                </ion-card>
+                <ion-card *ngIf="areaLevel2 && areaLevel2.isDistrictAvailable">
+                    <ion-item >
+                        <ion-label>District</ion-label>
+                        <ion-select [(ngModel)]="district2" interface="popover" [disabled]="!state2" >
+                          <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel2 : (state2?state2.code:'') )" [value]="area" >{{area.areaname}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                  </ion-card>
+        </ion-grid>
+        <span *ngIf='areaLevel2'>{{areaLevel2.areaLevelName}}{{state2?('/'+state2.areaname):''}}
+            {{district2?('/'+district2.areaname):''}}</span>
+      </ion-grid>
+    <ion-grid>
+        <button ion-button block class="comparision-button" (click)="button3Click()">
+            Add Area 3
+          </button>
+          <ion-grid *ngIf="area3Click" class="area-selection-grid">
+              <ion-card >
+                  <ion-item>
+                      <ion-label>Area Level</ion-label>
+                      <ion-select [(ngModel)]="areaLevel3" interface="popover" (ionChange)="state3=null;district3=null;scrollDown();">
+                        <ion-option *ngFor="let level of areaLevel" [value] = "level" >{{level.areaLevelName}}</ion-option>
+                      </ion-select>
+                  </ion-item>
+                </ion-card>
+                <ion-card *ngIf="areaLevel3 && areaLevel3.isStateAvailable">
+                    <ion-item>
+                        <ion-label>State</ion-label>
+                        <ion-select [(ngModel)]="state3" interface="popover" (ionChange)="district3=null">
+                          <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel3 : 'IND' )" [value]="area" >{{area.areaname}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                  </ion-card>
+                  <ion-card *ngIf="areaLevel3 && areaLevel3.isDistrictAvailable">
+                      <ion-item >
+                          <ion-label>District</ion-label>
+                          <ion-select [(ngModel)]="district3" interface="popover" [disabled]="!state3" >
+                            <ion-option *ngFor="let area of ( area | comparisonViewAreaFilter : areaLevel3 : (state3?state3.code:'') )" [value]="area" >{{area.areaname}}</ion-option>
+                          </ion-select>
+                      </ion-item>
+                    </ion-card>
+          </ion-grid>
+          <span *ngIf='areaLevel3'>{{areaLevel3.areaLevelName}}{{state3?('/'+state3.areaname):''}}
+              {{district3?('/'+district3.areaname):''}}</span>
+        </ion-grid>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-row>
+      <ion-col>
+          <button ion-button block  (click)="reset()">Reset</button>
+      </ion-col>
+    <ion-col>
+        <button ion-button block (click)="comapreArea()">Compare</button>
+    </ion-col>
+
+  </ion-row>
+</ion-footer>
+
+
+

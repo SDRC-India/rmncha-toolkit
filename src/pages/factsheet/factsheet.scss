@@ -1,0 +1,25 @@
+page-factsheet {
+
+    .indicator-list
+    {
+        margin-top:10px;
+        max-height: 250px;
+        overflow: auto;
+    }
+
+    .comparision-button
+    {
+        text-transform: none;
+        justify-content: left !important;
+    }
+
+    .indicator-list-font{
+        font-size: 1.4rem;
+     }
+
+     .button-inner
+     {
+        justify-content: left !important;
+     }
+
+}

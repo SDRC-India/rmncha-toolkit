@@ -1,0 +1,334 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.smenu-custom {
+  height: 150px;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  background: color($colors, primary, base);
+}
+
+.snapshot-table-header .col {
+  background: color($colors, primary, base);
+  color: #ffffff;
+  padding: 10px;
+  align-items: center;
+  border-right-width: 1px !important;
+  border-right-color: #ffffff !important;
+}
+
+.snapshot-table-header .col:last-child {
+  background: color($colors, primary, base);
+  color: #ffffff;
+  padding: 10px;
+  align-items: center;
+  border-right: none !important;
+}
+
+.snapshot-table-data {
+  align-items: center;
+}
+
+.rmcha-menu {
+
+  color: color($colors, light, base);
+}
+
+.crumb-header-section {
+  padding: 10px 4px 6px 0px;
+  font-size: 15px;
+}
+
+.Maternal {
+  background: color($colors, maternal, base);
+}
+
+.Reproductive {
+  background: color($colors, reproductive, base);
+}
+
+.Child {
+  background: color($colors, childHealth, base);
+}
+
+.Newborn {
+  background: color($colors, newBorn, base);
+}
+
+.screenshot {
+  background-color: white !important
+}
+
+.pop-button {
+  border: none;
+  border-radius: 0px;
+  margin-right: -18px;
+}
+
+.area1 {
+  fill: color($colors, area1, base);
+}
+
+.area2 {
+  fill: color($colors, area2, base);
+}
+
+.area3 {
+  fill: color($colors, area3, base);
+}
+
+.table .row {
+  border: thin solid black;
+  font-size: 15px;
+}
+
+.no-data-available {
+  font-size: 18px;
+}
+
+.scrolling-content {
+  // height:500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.snapshot-table-header .col {
+  border-right: 1px solid whitesmoke;
+}
+
+.snapshot-table-header .col:last-child {
+  border-right: 1px solid whitesmoke;
+}
+
+.alert-ios .alert-radio-label {
+  white-space: normal !important;
+}
+
+.alert-md .alert-radio-label {
+  white-space: normal !important;
+}
+
+.alert-wp .alert-radio-label {
+  white-space: normal !important;
+}
+
+.alert-ios .alert-checkbox-label {
+  white-space: normal !important;
+}
+
+.alert-md .alert-checkbox-label {
+  white-space: normal !important;
+}
+
+.alert-wp .alert-checkbox-label {
+  white-space: normal !important;
+}
+
+.Health_infrastructure {
+  background: color($colors, infrastructure, base);
+}
+
+.Human_Resource {
+  background: color($colors, hr, base);
+}
+
+.Adolescent {
+  background: color($colors, Adolescent, base);
+}
+
+.Demography {
+  background: color($colors, demography, base);
+}
+
+
+// for orientation change issue of select
+
+
+
+  .logo_menu{
+    margin-top: 20px;
+    background: url('../assets/imgs/nhm_logo.png') ;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 80px;
+    margin-left: 50px;
+  }
+
+  .header-logo
+  {
+    background: url('../assets/imgs/emb_nhm.png') ;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 65px;
+    height: 44px;
+
+  }
+
+  .button:not(.searchbar-clear-icon):not(.aspirational):not(.aspirational-image-button)
+  {
+    background: linear-gradient(to top,  #8fb8df 0%,#0c7edb 100%) !important;
+    border-radius: 8px;
+    
+  }
+
+  .header-title
+  {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 18px;
+    color: color($colors, light, base);
+    font-weight: bold;
+  }
+
+  .home_bg {
+    background-image: url('../assets/imgs/bgimage.jpg');
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
+
+  .app_name{
+    margin-left: 13px;
+  }
+
+  .aspirational {
+    border-radius: 50%;
+    height: 42vw;
+    width: 42vw;
+    margin-top: 30px;
+    background: linear-gradient(to bottom, #e07c09, #fffefe, rgba(44, 138, 7, 0.966)) !important;
+    color: #208bf7;
+    font-size: 16px;
+    text-transform: none;
+    // margin-bottom: 30px;
+  
+  }
+
+
+  .aspirational-image-button{
+    background-image: url('../assets/imgs/aspirational.png');
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+  height: 42vw;
+  width: 42vw;
+  margin-top: 30px;
+  background-color:white !important;
+  }
+
+  .aspirational-image-button:hover{background-color:orange;}
+
+
+
+  @media screen and (orientation:landscape) {
+    .alert-wrapper {
+    max-height: 260px;
+    min-height: 100px
+    }
+    [ng-reflect-ng-switch] {
+    overflow: auto;
+    }
+    .alert-radio-group {
+    max-height: 140px !important;
+    }
+  
+    .alert-checkbox-group {
+      max-height: 140px !important;
+      }
+  
+      .aspirational {
+        border-radius: 50%;
+        height: 20vw;
+        width: 20vw;
+        margin-top: 30px;
+        background: linear-gradient(to bottom, #e07c09, #fffefe, rgba(44, 138, 7, 0.966)) !important;
+        color: #208bf7;
+        font-size: 16px;
+        // margin-bottom: 30px;
+        text-transform: none;
+      
+      }
+
+
+      .aspirational-image-button{
+        background-image: url('../assets/imgs/aspirational.png');
+        -webkit-background-size: 100%;
+        -moz-background-size: 100%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        height: 20vw;
+        width: 20vw;
+        margin-top: 30px;
+        background-color:white !important;
+      }
+    }
+
+    .indicator-list::-webkit-scrollbar,.area-list::-webkit-scrollbar {
+      -webkit-appearance: none;
+  }
+  
+  .indicator-list::-webkit-scrollbar:vertical,.area-list::-webkit-scrollbar:vertical {
+      width: 11px;
+  }
+  
+  .indicator-list::-webkit-scrollbar:horizontal,.area-list::-webkit-scrollbar:horizontal {
+      height: 11px;
+  }
+  
+  .indicator-list::-webkit-scrollbar-thumb,.area-list::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid white;
+      background-color: rgba(0, 0, 0, .5);
+  }
+  
+  .indicator-list::-webkit-scrollbar-track,.area-list::-webkit-scrollbar-track {
+    background-color: #fff;
+      border-radius: 8px;
+  }
+
+  .exit-toast
+  {
+    opacity: 0.9;
+    align-items: center;
+    text-align: center;
+    max-width: 47%;
+    max-height: 91%;
+    margin-left: 27%;
+
+    > div{
+      border-radius: 25px !important;
+    }
+  }
+  
+
+ 
+  .swiper-slide.swiper-slide-active
+    {
+      width: 100% !important;
+    }
+
+
+  

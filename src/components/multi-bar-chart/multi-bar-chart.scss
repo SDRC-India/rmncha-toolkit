@@ -1,0 +1,66 @@
+multi-bar-chart {
+
+    .area1
+    {
+      fill:color($colors, area1, base);
+    }
+    
+    .area2
+    {
+      fill:color($colors, area2, base);
+    }
+    
+    .area3
+    {
+      fill:color($colors, area3, base);
+    }
+
+    #MulbarChart {
+      max-height: 350px;
+      max-width: 100%;
+      overflow-y: auto;
+      overflow-x:hidden;
+    }
+
+
+    .Maternal
+    {
+      fill: color($colors, maternal, base);
+    }
+    
+    .Reproductive
+    {
+      fill: color($colors, reproductive, base);
+    }
+    
+    .Child
+    {
+      fill: color($colors, childHealth, base);
+    }
+    
+    
+    .Newborn{
+      fill: color($colors, newBorn, base);
+    }
+
+    .Health_infrastructure{
+      fill: color($colors, infrastructure, base);
+    }
+    
+    .Human_Resource
+    {
+      fill: color($colors, hr, base);
+    }
+    
+    .Adolescent
+    {
+      fill: color($colors, Adolescent, base);
+    }
+    
+    .Demography
+    {
+      fill: color($colors, demography, base);
+      
+    }
+
+}

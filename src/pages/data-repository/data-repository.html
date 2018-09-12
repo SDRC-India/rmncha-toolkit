@@ -1,0 +1,114 @@
+
+<ion-header>
+
+  <ion-navbar color="header">
+      <button ion-button menuToggle >
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-row>
+            <ion-col col-auto>
+            <ion-img class="header-logo"></ion-img></ion-col>
+            <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+            </ion-row>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="index">
+      <ion-segment-button *ngFor="let segement of segements;let i = index" [value]="i" (click)="selectTab(i)" >
+        {{segement}}
+      </ion-segment-button>
+</ion-segment>
+
+</ion-header>
+
+
+<ion-content padding class="home_bg">
+  <ion-slides #pageSlider (ionSlideWillChange)="changeWillSlide($event)">
+    <ion-slide>
+        <h1 class="crumb-header-section">Data Repository - {{singleSelectedIndicator?singleSelectedIndicator.iName:'No Indicator Selected'}}</h1>
+        <ion-grid  *ngFor="let source of sourceIndicatorDatas">
+            <button ion-button block class="comparision-button" (click)="selectSource(source.src)">
+                {{source.src.sourceName}}
+                 </button>
+                 <ion-searchbar [(ngModel)]="searchIndicators"  *ngIf="selectedSource==source.src && open"  placeholder="Search Indicator"></ion-searchbar>
+                 <ion-list *ngIf="selectedSource==source.src && open" class="indicator-list">
+                    <ion-item  *ngFor="let indicator of  (source.indicator|searchIndicator:searchIndicators) " >
+                      <ion-label class="indicator-list-font" (click)="selectIndicator(indicator)">{{indicator.iName}}</ion-label>
+                    </ion-item>
+                  </ion-list>
+            </ion-grid>
+
+      
+      </ion-slide>
+      
+      <ion-slide *ngIf="nationalLevel && areaLevel">
+          <h1 class="crumb-header-section">Data Repository - {{singleSelectedIndicator?singleSelectedIndicator.iName:'No Indicator Selected'}} </h1>
+          <ion-searchbar [(ngModel)]="searchState"  placeholder="Search Country/State"></ion-searchbar>
+                  <ion-grid  *ngFor="let area of ( area | comparisonViewAreaFilter : nationalLevel : 'GLO' | searchAreas:searchState )" >
+                      <button ion-button block class="comparision-button" [disabled]="!area.checked && selectedAreas.size==10" (click)="addArea(area)"> 
+                      <ion-label class="indicator-list-font" >{{area.areaname}}</ion-label>
+                      <ion-checkbox [(ngModel)]="area.checked" disabled="true" [checked]="area.checked" class="area-checkbox"></ion-checkbox>
+                      </button>
+                    </ion-grid >
+                     
+                <ion-grid *ngFor="let state of ( area | comparisonViewAreaFilter : areaLevel : 'IND' | searchAreas:searchState )" class="state-list">
+                  
+                  <ion-row>
+                      <ion-col col-2>
+                
+                  <button  class="expandList" ion-button icon-only (click)="expandArea(state,$event)">
+                      <ion-icon name="add" *ngIf="selectedState!=state"  color="dark"></ion-icon>
+                      <ion-icon name="remove" *ngIf="selectedState==state" color="dark"></ion-icon>
+                  </button>  
+            
+          </ion-col>
+              <ion-col col-10>
+              
+                  <button ion-button block class="comparision-button"  [disabled]="!state.checked && selectedAreas.size==10" (click)="addArea(state)" > 
+                    <ion-label class="indicator-list-font" >{{state.areaname}}</ion-label>
+                    <ion-checkbox [(ngModel)]="state.checked" disabled="true" [checked]="state.checked" class="area-checkbox" ></ion-checkbox>
+                    </button>
+                    <ion-searchbar [(ngModel)]="searchDistrict"  *ngIf="selectedState==state"  placeholder="Search District"></ion-searchbar>
+                    <ion-list *ngIf="selectedState==state" class="indicator-list">
+                        <ion-item  *ngFor="let district of ( area | comparisonViewAreaFilter : areaLevel: (selectedState?selectedState.code:'') | searchAreas :  searchDistrict)" >
+                          <ion-label class="indicator-list-font">{{district.areaname}}</ion-label>
+                          <ion-checkbox [(ngModel)]="district.checked" [disabled]="!district.checked && selectedAreas.size==10" [checked]="district.checked" (ionChange)="addDistrict(district)"></ion-checkbox>
+                        </ion-item>
+                      </ion-list>
+                      </ion-col>
+                  </ion-row>
+                  </ion-grid>
+   
+
+              <ion-row *ngIf="selectedAreas && selectedAreas.size && index==1" class="selection-number">
+                  <ion-col col-2 push-10>{{selectedAreas.size}}/10</ion-col></ion-row>
+              <ion-grid   class="indicator-selection-grid" *ngIf="selectedAreas && selectedAreas.size && index==1">
+                <ul>
+                  <li *ngFor="let level of getKeys(selectionAreaMap)">{{level}}
+                    <ul>
+                <li *ngFor="let area of getValues(level)">{{area}}</li>
+              </ul>
+                </li>
+              </ul>
+            
+              </ion-grid> 
+
+        </ion-slide>
+      
+  </ion-slides>
+
+</ion-content>
+
+<ion-footer class="hide-on-keyboard-open">    
+  <ion-row>
+
+  <ion-col col-6>
+                  <button ion-button block (click)="reset()">Reset</button>
+  </ion-col>
+
+    <ion-col col-6>
+        <button ion-button block (click)="next()">Generate</button>
+    </ion-col>
+
+
+
+  </ion-row>
+</ion-footer>

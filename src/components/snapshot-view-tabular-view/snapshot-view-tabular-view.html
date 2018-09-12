@@ -1,0 +1,12 @@
+<ion-grid text-center>
+  <ion-row class="snapshot-view-table-header ion-col">
+    <ion-col>Time period</ion-col>
+    <ion-col>Value</ion-col>    
+  </ion-row>
+  <ion-row *ngFor="let data of tableData">
+      <ion-col>{{data.tp}}</ion-col>
+      <ion-col>{{data.value}}</ion-col>    
+    </ion-row>
+
+</ion-grid>
+

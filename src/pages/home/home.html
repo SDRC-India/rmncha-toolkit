@@ -1,0 +1,75 @@
+<ion-header>
+
+  <ion-navbar color="header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+ 
+      <ion-row>
+        <ion-col col-auto>
+        <ion-img class="header-logo"></ion-img></ion-col>
+        <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+        </ion-row>
+
+        <ion-buttons end>
+          <button class="customOptions" ion-button icon-only (click)=open()>
+            <ion-icon name="help-circle"></ion-icon>
+          </button>
+        </ion-buttons>
+ 
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="home_bg">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+    <ion-buttons start>
+        <button large ion-button class="profile-button" (click)="customTypeSelection(true,false)">
+            Geographical Profile
+          </button>
+        </ion-buttons>
+    
+      </ion-col>
+      <ion-col col-6>
+        <ion-buttons end>
+          <button large ion-button class="profile-button" (click)="customTypeSelection(false,true)">
+            Thematic Profile
+          </button>
+        </ion-buttons>
+        </ion-col>
+        </ion-row>
+</ion-grid>
+  <div class="logodiv">
+    <button ion-button large class="comparision-button" (click)="goToSelectedView('SnapshotViewPage')">Snapshot Profile</button>
+      <br/>
+
+
+      <button ion-button large class="aspirational-image-button" (click)="goToSelectedView('NitiAyogIndicatorViewPage')"> </button>
+          <br/>
+    <button ion-button large class="comparision-button" (click)="goToSelectedView('ComparisonViewPage')">Comparative Profile</button>
+    <br/>
+
+   
+ 
+  </div>
+
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <button ion-button block class="footer_button" (click)="goToSelectedView('FactsheetPage')">Factsheet</button>
+      </ion-col>
+      <ion-col col-4 push-4>
+        <button ion-button block class="footer_button" (click)="goToSelectedView('DataRepositoryPage')">Data Repository</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

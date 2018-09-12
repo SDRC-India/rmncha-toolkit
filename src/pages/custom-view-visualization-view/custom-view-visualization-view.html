@@ -1,0 +1,89 @@
+
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-row>
+          <ion-col col-auto>
+          <ion-img class="header-logo"></ion-img></ion-col>
+          <ion-col col-auto class="header-title">RMNCH+A Toolkit</ion-col>
+          </ion-row>
+    <ion-buttons start >
+        <button ion-button icon-only class="customOptions" (click)=homePage() >
+          <ion-icon name="home"></ion-icon>
+        </button>
+      </ion-buttons>
+  <ion-buttons end>
+    <button class="customOptions" ion-button icon-only (click)=share() end>
+      <ion-icon name="share"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid >
+
+    <h1 class="crumb-header-section" *ngIf="customViewTypeSelection.areaWise">
+        {{selectedArea.areaname}} >> {{indicator.iName}} 
+      ({{indicator.unit.unitName}})</h1>
+
+    <h1 class="crumb-header-section" *ngIf="customViewTypeSelection.indicatorWise">
+      {{indicator.iName}} 
+      ({{indicator.unit.unitName}}) >> {{selectedArea.areaname}}</h1>
+
+      <h1 class="crumb-header-section" *ngIf="customViewTypeSelection.sourceWise">
+      {{selectedSource}} >> {{indicator.iName}} 
+      ({{indicator.unit.unitName}}) >> {{selectedArea.areaname}}</h1>
+
+ </ion-grid>
+
+
+<ion-grid  class="area-selection-grid" *ngIf="customViewVisualizationData ">
+
+  <ion-card >
+      <ion-item>
+          <ion-label>Source </ion-label>
+          <ion-select [(ngModel)]="selectedSource" (ionChange)="selectSource()" interface="popover">
+            <ion-option *ngFor="let source of getKeys(customViewVisualizationData)" [value] = "source" >{{source}}</ion-option>
+          </ion-select>
+      </ion-item>
+    </ion-card>
+</ion-grid>
+
+<ion-segment [(ngModel)]="selectedView">
+  <ion-segment-button *ngFor="let visualization of visualizations;let i = index" [value]="i+1" (click)="selectTab(i)" >
+    {{visualization}}
+  </ion-segment-button>
+</ion-segment>
+
+<ion-slides #pageSlider (ionSlideWillChange)="changeWillSlide($event)">
+  <ion-slide>
+<snapshot-view-line-chart *ngIf="lineChartData && selectedView==1 " [MultiLineChartData]="lineChartData"></snapshot-view-line-chart>
+</ion-slide>
+
+<ion-slide>
+<snapshot-view-bar-chart *ngIf="lineChartData && selectedView==2 " [barChartData]="lineChartData[0].values" [indicatorType]="lineChartData[0].values[0].class"></snapshot-view-bar-chart>
+</ion-slide>
+
+<ion-slide>
+<ion-grid *ngIf="tableData && selectedView==3 " margin-top text-center>
+      
+    <ion-row  class="comparision-table-header" >
+      <ion-col col-6>{{selectedSource}}</ion-col>
+      <ion-col col-6>Value</ion-col>
+    </ion-row>
+ 
+  
+    <ion-row *ngFor="let data of tableData " 
+      class="row comparision-view-table">
+      <ion-col col-6>{{data.axis}}</ion-col>
+      <ion-col col-6>{{data.value}}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-slide>
+</ion-slides>
+
+</ion-content>
