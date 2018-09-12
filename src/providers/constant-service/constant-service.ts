@@ -61,8 +61,7 @@ export class ConstantServiceProvider {
       human_resource: "Human Resource",
       adolescent: "Adolescent",
       noInternetMsg: "Please check your internet connection.",
-      serverUrl: "http://prod1.sdrc.co.in/rmnchawapp/api/v1/",
-      // serverUrl:'http://192.168.1.197:8081/rmnchawapp/api/v1/',
+      serverUrl: "URL Servel URL here",
       customViewUrl: "fetch/customview/",
       memoryFull:
         "Looks like your phone is running out of memory.Please make sure you have 50MB of free space",
