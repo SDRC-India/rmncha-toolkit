@@ -1,6 +1,6 @@
 #installation 
 
-Checkout form - http://192.168.1.5/svn/si-rmncha/trunk/mobile-master
+Checkout form - https://github.com/SDRC-India/rmncha-toolkit.git
 
 
 Post checkout run npm install within root folder of project from cmd and a node modules folder will
